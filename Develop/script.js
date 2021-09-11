@@ -9,7 +9,6 @@ var $currentDayEl = $("#currentDay");
 
 
 setInterval(displayTime, 1000);
-createCalendar();
 
 
 function displayTime() {
