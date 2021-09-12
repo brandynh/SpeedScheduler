@@ -4,17 +4,21 @@ $(document).ready(function () {
     console.log('Ready to execute!');
 
     var $currentDayEl = $('#currentDay');
+    
 
     var currentTime = moment().format('dddd, MMMM Do [at] hh:mm a');
+    // Sets current hour as an int for compairson logic
     var currentHour = parseInt(moment().format('HH'));
-    var rowTime = (parseInt($(".row").attr("id")));
+    
+    
+    updateSchedule();
 
-
-    // Sets interval to display formatted time
+    // Sets interval to display formatted time updates every second
     setInterval(displayContent, 1000);
     // Sets interval and updates past, present, future
     setInterval(updateSchedule, 10000);
 
+    //Display time on jumbotron
     function displayContent() {
 
         $currentDayEl.text(currentTime);
@@ -22,30 +26,36 @@ $(document).ready(function () {
 
     }
 
+    //Updates textarea classes based off current time
     function updateSchedule() {
 
-
+        
         console.log(currentHour);
 
 
+        // for each to interrate through rows and formax
 
+        $('.row').each(function () {
 
-        $(".row").each(function () {
-
+            var rowTime = (parseInt($(".row").attr("id")));
+            // sets row time ID as int used for comparison logic
             if (rowTime < currentHour) {
 
-                $(this).children("textarea").addClass("past")
-                console.log("past")
+                $(".row").children("textarea").addClass("past")
+                console.log("past");
             } else
                 if (rowTime === currentHour) {
 
-                    $(this).children("textarea").remove("past").addClass("present")
+                    $(".row").children("textarea").remove("past").addClass("present")
+                    console.log("present");
 
                 } else {
-                    $(this).children("textarea").removeClass("past", "present").addClass("future");
+                    $(".row").children("textarea").removeClass("past", "present").addClass("future");
+                    console.log("future");
 
                 }
             console.log(rowTime);
+        
         })
 
     }
