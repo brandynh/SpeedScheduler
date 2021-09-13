@@ -11,7 +11,7 @@ This work planner was created using java and jquery API
 Click [here]() to visit the Speed Scheduler!!
 
 ## Screenshots / Demo
-![Screenshot]()
+![Screenshot](./Develop/Work%20Day%20Scheduler.gif)
 
 ## Credits
 
